@@ -3,13 +3,13 @@
   "id": "toeknees_simple_tools",
   "version": "${version}",
   "name": "Toeknee's Simple Tools",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Mod that adds some simple tools to the game.",
   "authors": [
-    "Me!"
+    "Anthony Mendez"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/anthonymendez/Toeknee-s-Simple-Tools",
+    "sources": "https://github.com/anthonymendez/Toeknee-s-Simple-Tools"
   },
   "license": "CC0-1.0",
   "icon": "assets/toeknees_simple_tools/icon.png",

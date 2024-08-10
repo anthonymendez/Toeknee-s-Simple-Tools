@@ -1,15 +1,15 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/anthonymendez/Toeknee-s-Simple-Tools"
 license = "Insert License Here"
 
 [[mods]]
 modId = "toeknees_simple_tools"
 version = "${version}"
 displayName = "Toeknee's Simple Tools"
-authors = "Me!"
+authors = "Anthony Mendez"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Mod that adds some simple tools to the game.
 '''
 #logoFile = ""
 
