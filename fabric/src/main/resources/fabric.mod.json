@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.anthonymendez.fabric.ExampleModFabric"
+      "com.anthonymendez.fabric.ToekneeSimpleToolsFabric"
     ],
     "client": [
-      "com.anthonymendez.fabric.client.ExampleModFabricClient"
+      "com.anthonymendez.fabric.client.ToekneeSimpleToolsFabricClient"
     ]
   },
   "mixins": [
