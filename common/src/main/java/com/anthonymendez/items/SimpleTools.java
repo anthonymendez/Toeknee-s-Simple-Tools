@@ -1,17 +1,22 @@
 package com.anthonymendez.items;
 
-import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.function.Supplier;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 
 public class SimpleTools {
-  public static final SimplePickaxeTool EMERALD_PICKAXE =
-      new SimplePickaxeTool(SimpleToolMaterials.EMERALD);
-  public static final SimplePickaxeTool NETHER_QUARTZ_PICKAXE =
-      new SimplePickaxeTool(SimpleToolMaterials.NETHER_QUARTZ);
+  public static final Supplier<Item> EMERALD_PICKAXE =
+      Suppliers.memoize(() -> new SimplePickaxeTool(SimpleToolMaterials.EMERALD));
+
+  public static final Supplier<Item> QUARTZ_PICKAXE =
+      Suppliers.memoize(() -> new SimplePickaxeTool(SimpleToolMaterials.QUARTZ));
 
   /** Contains a list of all {@link SimpleTools}. */
-  public static final Item[] ALL_TOOLS = {EMERALD_PICKAXE, NETHER_QUARTZ_PICKAXE};
-
+  public static final List<Supplier<Item>> ALL_TOOLS =
+      ImmutableList.<Supplier<Item>>builder()
+          .add(EMERALD_PICKAXE)
+          .add(QUARTZ_PICKAXE)
+          .build();
 }

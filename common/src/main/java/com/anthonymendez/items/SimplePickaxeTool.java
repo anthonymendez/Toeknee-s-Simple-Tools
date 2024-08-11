@@ -3,7 +3,6 @@ package com.anthonymendez.items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
 
 /** Extension of {@link PickaxeItem} to allow for more customization and behaviour in the future. */
 public class SimplePickaxeTool extends PickaxeItem {

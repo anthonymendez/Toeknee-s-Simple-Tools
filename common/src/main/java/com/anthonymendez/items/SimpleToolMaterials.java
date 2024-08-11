@@ -1,16 +1,14 @@
 package com.anthonymendez.items;
 
 import com.google.common.base.Suppliers;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.Supplier;
 import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
-
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
  * Enum describing {@link ToolMaterial}s. Similar in structure to {@link
@@ -27,7 +25,7 @@ public enum SimpleToolMaterials implements ToolMaterial {
       25,
       createRepairIngredientSupplier(Items.EMERALD)),
   // Faster and more durable than iron.
-  NETHER_QUARTZ(
+  QUARTZ(
       BlockTags.INCORRECT_FOR_IRON_TOOL,
       750,
       7F,
@@ -42,7 +40,7 @@ public enum SimpleToolMaterials implements ToolMaterial {
   private final int enchantability;
   private final Supplier<Ingredient> repairIngredient;
 
-  private SimpleToolMaterials(
+  SimpleToolMaterials(
       final TagKey<Block> inverseTag,
       final int itemDurability,
       final float miningSpeed,
@@ -87,6 +85,6 @@ public enum SimpleToolMaterials implements ToolMaterial {
   }
 
   public Ingredient getRepairIngredient() {
-    return (Ingredient) this.repairIngredient.get();
+    return this.repairIngredient.get();
   }
 }
