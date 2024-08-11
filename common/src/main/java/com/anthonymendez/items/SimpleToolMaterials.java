@@ -1,6 +1,7 @@
 package com.anthonymendez.items;
 
 import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -16,6 +17,14 @@ import net.minecraft.registry.tag.TagKey;
  */
 public enum SimpleToolMaterials implements ToolMaterial {
   // Stone variants, same as cobblestone :)
+  // Copper is slightly better than stone.
+  COPPER(
+      BlockTags.INCORRECT_FOR_STONE_TOOL,
+      200,
+      5.0F,
+      1.5F,
+      14,
+      createRepairIngredientSupplier(Items.COPPER_INGOT)),
   // Harder than iron, but about +150 more durability.
   EMERALD(
       BlockTags.INCORRECT_FOR_IRON_TOOL,
@@ -55,6 +64,10 @@ public enum SimpleToolMaterials implements ToolMaterial {
     Objects.requireNonNull(repairIngredient);
     this.repairIngredient = Suppliers.memoize(repairIngredient::get);
   }
+
+  /** All {@link SimpleToolMaterials} in an {@link ImmutableList}. */
+  public static final ImmutableList<SimpleToolMaterials> ALL_SIMPLE_TOOL_MATERIALS =
+      ImmutableList.<SimpleToolMaterials>builder().add(COPPER).add(EMERALD).add(QUARTZ).build();
 
   /** Provides {@link Supplier} for {@link Ingredient} when provided the list of {@link Item}. */
   public static Supplier<Ingredient> createRepairIngredientSupplier(Item... items) {
