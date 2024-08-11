@@ -1,3 +1,5 @@
+<img align="left" width="80" height="80" src="common/src/main/resources/assets/toeknees_simple_tools/textures/item/emerald_pickaxe.png" alt="icon">
+
 # Toeknee's Simple Tools Minecraft Mod - [Modrinth Page](https://modrinth.com/mod/toeknees-simple-tools)
 
 This is a simple mod that adds simple tools to the game. No fuss.
