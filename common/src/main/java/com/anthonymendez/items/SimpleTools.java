@@ -8,15 +8,13 @@ import net.minecraft.item.Item;
 
 public class SimpleTools {
   public static final Supplier<Item> EMERALD_PICKAXE =
-      Suppliers.memoize(() -> new SimplePickaxeTool(SimpleToolMaterials.EMERALD));
+      Suppliers.memoize(
+          () -> new SimplePickaxeTool(SimpleToolMaterials.EMERALD));
 
   public static final Supplier<Item> QUARTZ_PICKAXE =
       Suppliers.memoize(() -> new SimplePickaxeTool(SimpleToolMaterials.QUARTZ));
 
   /** Contains a list of all {@link SimpleTools}. */
   public static final List<Supplier<Item>> ALL_TOOLS =
-      ImmutableList.<Supplier<Item>>builder()
-          .add(EMERALD_PICKAXE)
-          .add(QUARTZ_PICKAXE)
-          .build();
+      ImmutableList.<Supplier<Item>>builder().add(EMERALD_PICKAXE).add(QUARTZ_PICKAXE).build();
 }
