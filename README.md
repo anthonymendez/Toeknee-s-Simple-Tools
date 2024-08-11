@@ -7,6 +7,7 @@ This is a simple mod that adds simple tools to the game. No fuss.
 ## Requirements to Run
 * Minecraft 1.21+
 * NeoForge 21.0.167+ or Fabric 0.16.0
+* Architectury 13.0.6
 * The NeoForge JAR or Fabric JAR.
 
 ## Additions
