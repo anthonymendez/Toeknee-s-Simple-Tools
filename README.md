@@ -1,4 +1,4 @@
-# Toeknee's Simple Tools Minecraft Mod
+# Toeknee's Simple Tools Minecraft Mod - [Modrinth Page](https://modrinth.com/mod/toeknees-simple-tools)
 
 This is a simple mod that adds simple tools to the game. No fuss.
 
