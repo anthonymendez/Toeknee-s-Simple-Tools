@@ -7,14 +7,14 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:emerald"
+      "item": "minecraft:quartz_block"
     },
     "/": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "id": "toeknees_simple_tools:item/emerald_pickaxe"
-  },
-  "group": "simple_tools"
+    "id": "toeknees_simple_tools:quartz_pickaxe",
+    "count": 1
+  }
 }
