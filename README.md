@@ -14,5 +14,7 @@ This is a simple mod that adds simple tools to the game. No fuss.
 
 ## Additions
 
-* Emerald Pickaxe
-* Quartz Pickaxe
+* Emerald Tools
+* Quartz Tools
+* Copper Tools
+* More soon :)
