@@ -10,6 +10,9 @@ import net.minecraft.text.Text;
 
 /** Extension of {@link PickaxeItem} to allow for more customization and behaviour in the future. */
 public class SimplePickaxeTool extends PickaxeItem implements ISimpleTool {
+  public static final float BASE_ATTACK_DAMAGE = 2.0F;
+  public static final float BASE_ATTACK_SPEED = 1.6F;
+
   private final float attackDamage;
   private final float attackSpeed;
 
@@ -20,7 +23,8 @@ public class SimplePickaxeTool extends PickaxeItem implements ISimpleTool {
   public SimplePickaxeTool(ToolMaterial material) {
     super(material, new Settings());
     Pair<Float, Float> attackDamageAndSpeed =
-        SimpleToolUtils.getAttackDamageAndSpeedFromMiningToolItem(this, 2.0F, 1.2F);
+        SimpleToolUtils.getAttackDamageAndSpeedFromMiningToolItem(
+            this, BASE_ATTACK_DAMAGE, BASE_ATTACK_SPEED);
     this.attackDamage = attackDamageAndSpeed.getFirst();
     this.attackSpeed = attackDamageAndSpeed.getSecond();
   }
