@@ -1,4 +1,17 @@
 {
   "item.toeknees_simple_tools.emerald_pickaxe": "Emerald Pickaxe",
-  "item.toeknees_simple_tools.quartz_pickaxe": "Quartz Pickaxe"
+  "item.toeknees_simple_tools.emerald_axe": "Emerald Axe",
+  "item.toeknees_simple_tools.emerald_shovel": "Emerald Shovel",
+  "item.toeknees_simple_tools.emerald_sword": "Emerald Sword",
+  "item.toeknees_simple_tools.emerald_hoe": "Emerald Hoe",
+  "item.toeknees_simple_tools.quartz_pickaxe": "Quartz Pickaxe",
+  "item.toeknees_simple_tools.quartz_axe": "Quartz Axe",
+  "item.toeknees_simple_tools.quartz_shovel": "Quartz Shovel",
+  "item.toeknees_simple_tools.quartz_sword": "Quartz Sword",
+  "item.toeknees_simple_tools.quartz_hoe": "Quartz Hoe",
+  "item.toeknees_simple_tools.copper_pickaxe": "Copper Pickaxe",
+  "item.toeknees_simple_tools.copper_axe": "Copper Axe",
+  "item.toeknees_simple_tools.copper_shovel": "Copper Shovel",
+  "item.toeknees_simple_tools.copper_sword": "Copper Sword",
+  "item.toeknees_simple_tools.copper_hoe": "Copper Hoe"
 }
