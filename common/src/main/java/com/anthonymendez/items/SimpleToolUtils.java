@@ -28,8 +28,7 @@ public class SimpleToolUtils {
         MiningToolItem.createAttributeModifiers(
                 miningToolItem.getMaterial(), baseAttackDamage, baseAttackSpeed)
             .modifiers();
-    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
-        modifiers, baseAttackDamage, baseAttackSpeed);
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(modifiers);
   }
 
   /**
@@ -46,8 +45,7 @@ public class SimpleToolUtils {
         SwordItem.createAttributeModifiers(
                 swordItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
             .modifiers();
-    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
-        modifiers, baseAttackDamage, baseAttackSpeed);
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(modifiers);
   }
 
   /**
@@ -64,8 +62,7 @@ public class SimpleToolUtils {
         ShovelItem.createAttributeModifiers(
                 shovelItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
             .modifiers();
-    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
-        modifiers, baseAttackDamage, baseAttackSpeed);
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(modifiers);
   }
 
   /**
@@ -82,8 +79,8 @@ public class SimpleToolUtils {
         HoeItem.createAttributeModifiers(
                 hoeItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
             .modifiers();
-    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
-        modifiers, baseAttackDamage, baseAttackSpeed);
+    // TODO(Anthony Mendez): Scale hoe speed manually  Shere as well.
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(modifiers);
   }
 
   /**
@@ -100,8 +97,9 @@ public class SimpleToolUtils {
         AxeItem.createAttributeModifiers(
                 axeItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
             .modifiers();
-    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
-        modifiers, baseAttackDamage, baseAttackSpeed);
+    // Manually set damage here as Axe doesn't seem to scale like swords.
+    // TODO(Anthony Mendez): Create damage table.
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(modifiers);
   }
 
   /**
@@ -113,9 +111,7 @@ public class SimpleToolUtils {
    * <p>Base attack damage and speed need to be provided as it's dependent off the weapon.
    */
   public static Pair<Float, Float> getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
-      List<AttributeModifiersComponent.Entry> modifiers,
-      float baseAttackDamage,
-      float baseAttackSpeed) {
+      List<AttributeModifiersComponent.Entry> modifiers) {
     float attackDamage =
         getValueOfIdentifierFromAttributeModifiersComponentEntryList(
             modifiers, MiningToolItem.BASE_ATTACK_DAMAGE_MODIFIER_ID);
