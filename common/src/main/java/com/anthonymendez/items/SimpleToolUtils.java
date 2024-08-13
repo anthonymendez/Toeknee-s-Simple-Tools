@@ -1,17 +1,18 @@
 package com.anthonymendez.items;
 
 import com.mojang.datafixers.util.Pair;
+import java.text.DecimalFormat;
 import java.util.List;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.item.Item;
-import net.minecraft.item.MiningToolItem;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 public class SimpleToolUtils {
+
+  private static final DecimalFormat TOOLTIP_FORMAT = new DecimalFormat("#0.#");
 
   /**
    * Retrieves the attack damage and speed from a {@link MiningToolItem} in a {@link Pair} whereby
@@ -43,7 +44,61 @@ public class SimpleToolUtils {
       SwordItem swordItem, float baseAttackDamage, float baseAttackSpeed) {
     List<AttributeModifiersComponent.Entry> modifiers =
         SwordItem.createAttributeModifiers(
-                swordItem.getMaterial(), (int)baseAttackDamage, baseAttackSpeed)
+                swordItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
+            .modifiers();
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
+        modifiers, baseAttackDamage, baseAttackSpeed);
+  }
+
+  /**
+   * Retrieves the attack damage and speed from a {@link ShovelItem} in a {@link Pair} whereby the
+   * order is:
+   *
+   * <p>* {@code Pair.of(attackDamage, attackSpeed)}
+   *
+   * <p>Base attack damage and speed need to be provided as it's dependent off the weapon.
+   */
+  public static Pair<Float, Float> getAttackDamageAndSpeedFromShovelItem(
+      ShovelItem shovelItem, float baseAttackDamage, float baseAttackSpeed) {
+    List<AttributeModifiersComponent.Entry> modifiers =
+        ShovelItem.createAttributeModifiers(
+                shovelItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
+            .modifiers();
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
+        modifiers, baseAttackDamage, baseAttackSpeed);
+  }
+
+  /**
+   * Retrieves the attack damage and speed from a {@link HoeItem} in a {@link Pair} whereby the
+   * order is:
+   *
+   * <p>* {@code Pair.of(attackDamage, attackSpeed)}
+   *
+   * <p>Base attack damage and speed need to be provided as it's dependent off the weapon.
+   */
+  public static Pair<Float, Float> getAttackDamageAndSpeedFromHoeItem(
+      HoeItem hoeItem, float baseAttackDamage, float baseAttackSpeed) {
+    List<AttributeModifiersComponent.Entry> modifiers =
+        HoeItem.createAttributeModifiers(
+                hoeItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
+            .modifiers();
+    return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
+        modifiers, baseAttackDamage, baseAttackSpeed);
+  }
+
+  /**
+   * Retrieves the attack damage and speed from a {@link AxeItem} in a {@link Pair} whereby the
+   * order is:
+   *
+   * <p>* {@code Pair.of(attackDamage, attackSpeed)}
+   *
+   * <p>Base attack damage and speed need to be provided as it's dependent off the weapon.
+   */
+  public static Pair<Float, Float> getAttackDamageAndSpeedFromAxeItem(
+      AxeItem axeItem, float baseAttackDamage, float baseAttackSpeed) {
+    List<AttributeModifiersComponent.Entry> modifiers =
+        AxeItem.createAttributeModifiers(
+                axeItem.getMaterial(), (int) baseAttackDamage, baseAttackSpeed)
             .modifiers();
     return getAttackDamageAndSpeedFromAttributeModifiersComponentEntryList(
         modifiers, baseAttackDamage, baseAttackSpeed);
@@ -109,10 +164,10 @@ public class SimpleToolUtils {
     tooltip.add(Text.of(""));
     tooltip.add(Text.translatable("When in Main Hand:").formatted(Formatting.GRAY));
     tooltip.add(
-        Text.translatable(String.format(" %.1f Attack Damage", attackDamage))
+        Text.translatable(String.format(" %s Attack Damage", TOOLTIP_FORMAT.format(attackDamage)))
             .formatted(Formatting.DARK_GREEN));
     tooltip.add(
-        Text.translatable(String.format(" %.1f Attack Speed", attackSpeed))
+        Text.translatable(String.format(" %s Attack Speed", TOOLTIP_FORMAT.format(attackSpeed)))
             .formatted(Formatting.DARK_GREEN));
   }
 }
