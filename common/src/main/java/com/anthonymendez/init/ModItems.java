@@ -34,20 +34,6 @@ public final class ModItems {
         .build();
   }
 
-  /**
-   * Registers the given List of Tools. Tools must be ordered as such:
-   *
-   * <p>Pickaxe, Axe, Shovel, Sword, Hoe
-   */
-  public static ImmutableList<RegistrySupplier<Item>> registerToolset(
-      List<SimpleToolset> simpleToolsets) {
-    ImmutableList.Builder<RegistrySupplier<Item>> builder = ImmutableList.builder();
-    for (SimpleToolset simpleToolset : simpleToolsets) {
-      builder.addAll(registerToolset(simpleToolset));
-    }
-    return builder.build();
-  }
-
   public static final ImmutableList<RegistrySupplier<Item>> EMERALD_TOOLSET_SUPPLIER_LIST =
       registerToolset(SimpleTools.EMERALD_TOOLSET);
   public static final ImmutableList<RegistrySupplier<Item>> QUARTZ_TOOLSET_SUPPLIER_LIST =
