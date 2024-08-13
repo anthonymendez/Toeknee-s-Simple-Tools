@@ -1,17 +1,21 @@
 package com.anthonymendez.items;
 
 import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 
-import java.util.List;
-
 public class SimpleHoeItem extends HoeItem implements ISimpleTool {
   private final float attackDamage;
   private final float attackSpeed;
+
+  public static final float BASE_ATTACK_DAMAGE = 1.0F;
+  public static final float BASE_ATTACK_SPEED = 1.0F;
 
   /**
    * Creates new {@link SimpleHoeItem} with the given {@link ToolMaterial}. A default {@link
@@ -20,8 +24,9 @@ public class SimpleHoeItem extends HoeItem implements ISimpleTool {
   public SimpleHoeItem(ToolMaterial material) {
     super(material, new Settings());
     Pair<Float, Float> attackDamageAndSpeed =
-        SimpleToolUtils.getAttackDamageAndSpeedFromMiningToolItem(this, 0.0F, 1F);
-    this.attackDamage = attackDamageAndSpeed.getFirst();
+        SimpleToolUtils.getAttackDamageAndSpeedFromHoeItem(
+            this, BASE_ATTACK_DAMAGE, BASE_ATTACK_SPEED);
+    this.attackDamage = BASE_ATTACK_DAMAGE;
     this.attackSpeed = attackDamageAndSpeed.getSecond();
   }
 
@@ -44,4 +49,25 @@ public class SimpleHoeItem extends HoeItem implements ISimpleTool {
     super.appendTooltip(stack, context, tooltip, type);
     SimpleToolUtils.AppendDefaultMinecraftMiningItemTooltip(tooltip, attackDamage, attackSpeed);
   }
+
+  /** Overrides attack damage and returns the base damage calculated in the constructor. */
+  @Override
+  public float getBonusAttackDamage(
+      Entity target, float baseAttackDamage, DamageSource damageSource) {
+    return attackDamage;
+  }
+
+  /**
+   * Returns the bonus attack speed based on the {@link SimpleToolMaterials}.
+   *
+   * <p>TODO(Anthony Mendez): Figure out what the actual attack speed of the hoe is. Too fast to be
+   * 1.0F.
+   */
+  //  public float getBonusAttackSpeed() {
+  //    return switch (getMaterial()) {
+  //      case SimpleToolMaterials.EMERALD, SimpleToolMaterials.QUARTZ -> 2.0F;
+  //      case SimpleToolMaterials.COPPER -> 1.0F;
+  //      default -> 0.0F;
+  //    };
+  //  }
 }
