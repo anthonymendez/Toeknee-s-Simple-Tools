@@ -30,7 +30,7 @@ public enum SimpleToolMaterials implements ToolMaterial {
       BlockTags.INCORRECT_FOR_IRON_TOOL,
       400,
       14F,
-      3.75F,
+      2.75F,
       25,
       createRepairIngredientSupplier(Items.EMERALD)),
   // Faster and more durable than iron.
@@ -38,7 +38,7 @@ public enum SimpleToolMaterials implements ToolMaterial {
       BlockTags.INCORRECT_FOR_IRON_TOOL,
       750,
       7F,
-      3.5F,
+      2.5F,
       22,
       createRepairIngredientSupplier(Items.QUARTZ_BLOCK));
 
