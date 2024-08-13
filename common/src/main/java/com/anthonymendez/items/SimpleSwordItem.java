@@ -1,15 +1,19 @@
 package com.anthonymendez.items;
 
 import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 
-import java.util.List;
-
 public class SimpleSwordItem extends SwordItem implements ISimpleTool {
+  public static final float BASE_ATTACK_DAMAGE = 4.0F;
+  public static final float BASE_ATTACK_SPEED = 1.6F;
+
   private final float attackDamage;
   private final float attackSpeed;
 
@@ -20,7 +24,8 @@ public class SimpleSwordItem extends SwordItem implements ISimpleTool {
   public SimpleSwordItem(ToolMaterial material) {
     super(material, new Settings());
     Pair<Float, Float> attackDamageAndSpeed =
-        SimpleToolUtils.getAttackDamageAndSpeedFromSwordItem(this, 4.0F, 1.6F);
+        SimpleToolUtils.getAttackDamageAndSpeedFromSwordItem(
+            this, BASE_ATTACK_DAMAGE, BASE_ATTACK_SPEED);
     this.attackDamage = attackDamageAndSpeed.getFirst();
     this.attackSpeed = attackDamageAndSpeed.getSecond();
   }
@@ -43,5 +48,11 @@ public class SimpleSwordItem extends SwordItem implements ISimpleTool {
       ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
     super.appendTooltip(stack, context, tooltip, type);
     SimpleToolUtils.AppendDefaultMinecraftMiningItemTooltip(tooltip, attackDamage, attackSpeed);
+  }
+
+  @Override
+  public float getBonusAttackDamage(
+      Entity target, float baseAttackDamage, DamageSource damageSource) {
+    return attackDamage;
   }
 }
