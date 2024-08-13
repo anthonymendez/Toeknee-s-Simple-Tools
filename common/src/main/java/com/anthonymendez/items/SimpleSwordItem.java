@@ -50,6 +50,7 @@ public class SimpleSwordItem extends SwordItem implements ISimpleTool {
     SimpleToolUtils.AppendDefaultMinecraftMiningItemTooltip(tooltip, attackDamage, attackSpeed);
   }
 
+  /** Overrides attack damage and returns the base damage calculated in the constructor. */
   @Override
   public float getBonusAttackDamage(
       Entity target, float baseAttackDamage, DamageSource damageSource) {
