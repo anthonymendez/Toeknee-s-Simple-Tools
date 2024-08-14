@@ -15,6 +15,9 @@
   "icon": "assets/toeknees_simple_tools/icon.png",
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+      "com.anthonymendez.fabric.datageneration.ModDataGenerator"
+    ],
     "main": [
       "com.anthonymendez.fabric.ToekneeSimpleToolsFabric"
     ],
