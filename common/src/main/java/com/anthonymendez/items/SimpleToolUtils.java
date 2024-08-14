@@ -1,11 +1,14 @@
 package com.anthonymendez.items;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.List;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.*;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -165,5 +168,22 @@ public class SimpleToolUtils {
     tooltip.add(
         Text.translatable(String.format(" %s Attack Speed", TOOLTIP_FORMAT.format(attackSpeed)))
             .formatted(Formatting.DARK_GREEN));
+  }
+
+  /**
+   * Returns a single {@link Item} from an {@link Ingredient} if it's the only item in there.
+   * Otherwise, throw an exception.
+   */
+  public static Item getSingleItemFromIngredient(Ingredient ingredient) {
+    ImmutableList<Item> itemList =
+        Arrays.stream(ingredient.getMatchingStacks())
+            .map(ItemStack::getItem)
+            .collect(ImmutableList.toImmutableList());
+
+    if (itemList.size() != 1) {
+      throw new RuntimeException(String.format("Multiple items in %s", ingredient));
+    }
+
+    return itemList.getFirst();
   }
 }
