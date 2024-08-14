@@ -1,5 +1,6 @@
 package com.anthonymendez.items;
 
+import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
@@ -21,4 +22,7 @@ public interface ISimpleTool {
    */
   public void appendTooltip(
       ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type);
+
+  /** Create a crafting recipe for this item. */
+  public List<CraftingRecipeJsonBuilder> createCraftingRecipe();
 }

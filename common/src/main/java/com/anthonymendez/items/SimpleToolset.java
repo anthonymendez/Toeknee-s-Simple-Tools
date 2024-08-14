@@ -1,10 +1,12 @@
 package com.anthonymendez.items;
 
+import com.anthonymendez.ToekneeSimpleTools;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
-import net.minecraft.item.Item;
-
+import java.util.Collection;
 import java.util.function.Supplier;
+import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
+import net.minecraft.item.Item;
 
 /** Class to handle creating and retrieving newly created tools. */
 public class SimpleToolset {
@@ -17,6 +19,7 @@ public class SimpleToolset {
   public final Supplier<Item> swordItem;
   public final Supplier<Item> hoeItem;
   public final ImmutableList<Supplier<Item>> allTools;
+  public ImmutableList<CraftingRecipeJsonBuilder> allRecipes;
 
   public SimpleToolset(SimpleToolMaterials material, String toolNamePrefix) {
     this.material = material;
@@ -34,5 +37,20 @@ public class SimpleToolset {
             .add(swordItem)
             .add(hoeItem)
             .build();
+  }
+
+  /** Only call once the toolset has been registered. */
+  public void setRecipes() {
+    if (!allRecipes.isEmpty()) {
+      ToekneeSimpleTools.LOGGER.warn("Set Recipes has already been called!");
+      return;
+    }
+
+    allRecipes =
+        allTools.stream()
+            .map(supplier -> (ISimpleTool) supplier.get())
+            .map(ISimpleTool::createCraftingRecipe)
+            .flatMap(Collection::stream)
+            .collect(ImmutableList.toImmutableList());
   }
 }

@@ -1,14 +1,16 @@
 package com.anthonymendez.items;
 
+import com.anthonymendez.datagenerator.ModRecipeProvider;
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import java.util.List;
-
+import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.text.Text;
 
 /** Extension of {@link ShovelItem} to allow for more customization and behaviour in the future. */
@@ -56,5 +58,25 @@ public class SimpleShovelTool extends ShovelItem implements ISimpleTool {
   public float getBonusAttackDamage(
       Entity target, float baseAttackDamage, DamageSource damageSource) {
     return attackDamage;
+  }
+
+  @Override
+  public List<CraftingRecipeJsonBuilder> createCraftingRecipe() {
+    Item recipeItem =
+        SimpleToolUtils.getSingleItemFromIngredient(getMaterial().getRepairIngredient());
+
+    return ImmutableList.of(
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
+            .pattern(" i ")
+            .pattern(" s ")
+            .pattern(" s ")
+            .input('i', recipeItem)
+            .input('s', Items.STICK)
+            .criterion(
+                ModRecipeProvider.hasItem(recipeItem),
+                ModRecipeProvider.conditionsFromItem(recipeItem))
+            .criterion(
+                ModRecipeProvider.hasItem(Items.STICK),
+                ModRecipeProvider.conditionsFromItem(Items.STICK)));
   }
 }
