@@ -16,7 +16,7 @@ public class NeoForgeDataGenerator {
 
   @SubscribeEvent
   public static void gatherData(GatherDataEvent gatherDataEvent) throws IOException {
-    ToekneeSimpleTools.LOGGER.info("Running Data Generator Init");
+    ToekneeSimpleTools.LOGGER.info("Running NeoFabric Data Generator");
 
     DataGenerator dataGenerator = gatherDataEvent.getGenerator();
     DataOutput dataOutput = dataGenerator.getPackOutput();
@@ -25,6 +25,5 @@ public class NeoForgeDataGenerator {
 
     dataGenerator.addProvider(
         gatherDataEvent.includeServer(), new ModRecipeProvider(dataOutput, lookupProvider));
-    dataGenerator.run();
   }
 }

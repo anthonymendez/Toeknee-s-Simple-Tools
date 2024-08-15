@@ -11,7 +11,6 @@ authors = "Anthony Mendez"
 description = '''
 Mod that adds some simple tools to the game.
 '''
-#logoFile = ""
 
 [[dependencies.toeknees_simple_tools]]
 modId = "neoforge"
