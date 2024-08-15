@@ -20,7 +20,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
   @Override
   public void generate(RecipeExporter exporter) {
-    ToekneeSimpleTools.LOGGER.info("Generating recipes outside fabric.");
+    ToekneeSimpleTools.LOGGER.info("Generating recipes.");
     ModRecipes.ALL_RECIPES.forEach(recipe -> recipe.offerTo(exporter));
   }
 

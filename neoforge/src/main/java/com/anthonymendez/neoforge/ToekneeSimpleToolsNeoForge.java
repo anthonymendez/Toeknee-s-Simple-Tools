@@ -8,6 +8,7 @@ public final class ToekneeSimpleToolsNeoForge {
 
   public ToekneeSimpleToolsNeoForge() {
     // Run our common setup.
+    ToekneeSimpleTools.LOGGER.info("NeoForge Init for Toeknee's Simple Tools.");
     ToekneeSimpleTools.init();
   }
 }

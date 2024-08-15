@@ -11,6 +11,7 @@ public final class ToekneeSimpleToolsFabric implements ModInitializer {
     // Proceed with mild caution.
 
     // Run our common setup.
+    ToekneeSimpleTools.LOGGER.debug("Fabric Init for Toeknee's Simple Tools.");
     ToekneeSimpleTools.init();
   }
 }
